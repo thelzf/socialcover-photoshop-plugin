@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Social Cover Presets</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #fff;
+      padding: 16px;
+      width: 280px;
+      height: 480px;
+      overflow-y: auto;
+    }
+    h3 {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 10px;
+      outline: none;
+      font-size: 14px;
+    }
+    .button {
+      width: 100%;
+      margin: 4px 0;
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+      background-color: #3c7dfa;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      text-align: left;
+      transition: background 0.2s;
+    }
+    .button:hover {
+      background-color: #2e64d6;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h3>📐 Social Cover Presets</h3>
+
+  <input type="text" id="search" placeholder="Search a social network..." />
+
+  <div id="list"></div>
+
+  <script>
+    // Lista com mais de 100 redes/plataformas
+    const networks = [
+      "LinkedIn", "YouTube", "Facebook", "Instagram", "TikTok", "Twitter (X)",
+      "Pinterest", "Snapchat", "Threads", "Reddit", "Twitch", "Discord",
+      "Behance", "Dribbble", "GitHub", "GitLab", "DeviantArt", "SoundCloud",
+      "Spotify", "Apple Music", "Bandcamp", "Medium", "Substack", "Tumblr",
+      "Vimeo", "Dailymotion", "Kick", "Rumble", "OnlyFans", "Patreon",
+      "Ko-fi", "Product Hunt", "Stack Overflow", "Figma Community", "Notion",
+      "Google Business", "Google Maps", "Yelp", "TripAdvisor", "Booking",
+      "Airbnb", "Trello", "Slack", "Zoom", "Skype", "WhatsApp", "Telegram",
+      "Signal", "Messenger", "WeChat", "LINE", "QQ", "VK", "Odnoklassniki",
+      "Xing", "Meetup", "Eventbrite", "Clubhouse", "Houseparty", "Caffeine",
+      "Bitbucket", "CodePen", "JSFiddle", "Hashnode", "Dev.to", "HackerRank",
+      "LeetCode", "Kaggle", "ResearchGate", "Academia.edu", "Wikipedia",
+      "Quora", "Yahoo Answers", "Imgur", "9GAG", "Memedroid", "Tinder",
+      "Bumble", "Happn", "Grindr", "OkCupid", "Hinge", "Couchsurfing",
+      "Gaia Online", "Second Life", "IMVU", "Roblox", "Minecraft Server",
+      "Steam", "Epic Games", "Battle.net", "PlayStation Network",
+      "Xbox Live", "Nintendo Online", "Origin", "Itch.io", "Game Jolt",
+      "Kickstarter", "Indiegogo", "Crowdfunder", "GoFundMe", "BuyMeACoffee",
+      "Etsy", "Shopify", "Amazon", "eBay", "AliExpress", "Mercado Livre",
+      "OLX", "Shopee", "Magazine Luiza", "Submarino", "Netshoes",
+      "Shein", "Temu", "Wish"
+    ];
+
+    const list = document.getElementById("list");
+    const search = document.getElementById("search");
+
+    // Gera botões
+    networks.forEach(name => {
+      const btn = document.createElement("button");
+      btn.className = "button";
+      btn.textContent = name + " Cover";
+      btn.onclick = () => alert(`Opening ${name} cover preset...`);
+      list.appendChild(btn);
+    });
+
+    // Filtro de busca
+    search.addEventListener("input", e => {
+      const term = e.target.value.toLowerCase();
+      document.querySelectorAll(".button").forEach(btn => {
+        btn.classList.toggle("hidden", !btn.textContent.toLowerCase().includes(term));
+      });
+    });
+  </script>
+</body>
+</html>
